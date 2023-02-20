@@ -184,6 +184,36 @@ def check_callback_data(call):
                                                         'прослушивания в режиме оффлайн.',
                              reply_markup=markup)
 
+        if call.data == "spotify1_2":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            spotify1 = types.InlineKeyboardButton("[1 month] - ", callback_data="spotify1_2_1")
+
+            markup.add(spotify1, back)
+
+            bot.send_message(call.message.chat.id, text='📃 Категория: Spotify Premium Duo на ваш аккаунт\n'
+                                                        '📃 Описание: Spotify Premium Duo — это новейшая '
+                                                        'подписка на сервис потоковой передачи музыки, '
+                                                        'которая предлагает две учетные записи Spotify '
+                                                        'Premium в рамках одного плана, включая все '
+                                                        'функции обычного плана Premium, такие как '
+                                                        'отсутствие рекламы, прослушивание в автономном '
+                                                        'режиме и воспроизведение по запросу.',
+                             reply_markup=markup)
+
+        if call.data == "spotify1_3":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            spotify1 = types.InlineKeyboardButton("[1 month] - ", callback_data="spotify1_3_1")
+
+            markup.add(spotify1, back)
+
+            bot.send_message(call.message.chat.id, text='📃 Категория: Spotify Premium Family на ваш аккаунт\n'
+                                                        '📃 Описание: Spotify Premium Family — особый тарифный '
+                                                        'план, позволяющий подключить до пяти родственников '
+                                                        '«плюс» главу семейства.',
+                             reply_markup=markup)
+
         if call.data == 'spotify1_1_1':
             write_adm(call)
 
@@ -194,6 +224,12 @@ def check_callback_data(call):
             write_adm(call)
 
         if call.data == 'spotify1_1_4':
+            write_adm(call)
+
+        if call.data == 'spotify1_2_1':
+            write_adm(call)
+
+        if call.data == 'spotify1_3_1':
             write_adm(call)
 
 
