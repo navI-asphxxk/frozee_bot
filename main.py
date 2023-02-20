@@ -48,7 +48,9 @@ def check_callback_data(call):
         if call.data == "tgbot":
             markup = InlineKeyboardMarkup(row_width=1)
             back = types.InlineKeyboardButton("Назад", callback_data="back")
-            markup.add(back)
+            write_asph = types.InlineKeyboardButton("Связаться с продацом", url='https://t.me/asphxxk')
+
+            markup.add(write_asph, back)
 
             bot.send_photo(call.message.chat.id, open('pict/telegram.jpg', 'rb'),
                            caption='📃 Категория: Telegram Bot\n'
@@ -62,8 +64,11 @@ def check_callback_data(call):
 
         if call.data == "spotify":
             markup = InlineKeyboardMarkup(row_width=1)
+            spotify1 = types.InlineKeyboardButton("Spotify Premium Individual", callback_data="spotify1_1")
+            spotify2 = types.InlineKeyboardButton("Spotify Premium Duo", callback_data="spotify1_2")
+            spotify3 = types.InlineKeyboardButton("Spotify Premium Family", callback_data="spotify1_3")
             back = types.InlineKeyboardButton("Назад", callback_data="back")
-            markup.add(back)
+            markup.add(spotify1, spotify2, spotify3, back)
 
             bot.send_photo(call.message.chat.id, open('pict/spotify.jpg', 'rb'),
                            caption='📃 Категория: Spotify Premium\n'
@@ -122,18 +127,6 @@ def check_callback_data(call):
             markup.add(back)
 
             bot.send_photo(call.message.chat.id, open('pict/steam.jpeg', 'rb'),
-                           caption='📃 Категория: Valorant Points(VP)\n'
-                                   '📃 Описание: Valorant Points — это основная денежная '
-                                   'единица в игре, за которую покупаются все игровые предметы, '
-                                   'боевой пропуск и Radianite Points.',
-                           reply_markup=markup)
-
-        if call.data == "change_reg_steam":
-            markup = InlineKeyboardMarkup(row_width=1)
-            back = types.InlineKeyboardButton("Назад", callback_data="back")
-            markup.add(back)
-
-            bot.send_photo(call.message.chat.id, open('pict/steam.jpeg', 'rb'),
                            caption='📃 Категория: Смена региона Steam',
                            reply_markup=markup)
 
@@ -143,7 +136,7 @@ def check_callback_data(call):
             markup.add(back)
 
             bot.send_photo(call.message.chat.id, open('pict/steam.jpeg', 'rb'),
-                           caption='📃 Категория: Способ пополнения Steam\т'
+                           caption='📃 Категория: Способ пополнения Steam\n'
                                    '📃 Описание: Пополнения баланса Steam (не через сайты, всё напрямую)',
                            reply_markup=markup)
 
@@ -172,6 +165,37 @@ def check_callback_data(call):
                            caption='📃 Категория: Epic Gamesg',
                            reply_markup=markup)
 
+        if call.data == "spotify1_1":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            spotify1 = types.InlineKeyboardButton("[1 month] - ", callback_data="spotify1_1_1")
+            spotify2 = types.InlineKeyboardButton("[3 month] - ", callback_data="spotify1_1_2")
+            spotify3 = types.InlineKeyboardButton("[6 month] - ", callback_data="spotify1_1_3")
+            spotify4 = types.InlineKeyboardButton("[12 month] - ", callback_data="spotify1_1_4")
+
+            markup.add(spotify1, spotify2, spotify3, spotify4, back)
+
+            bot.send_message(call.message.chat.id, text='📃 Категория: Spotify Premium Individual '
+                                                        'на ваш аккаунт\n'
+                                                        '📃 Описание: Spotify Premium Individual — '
+                                                        'Подразумевает один аккаунт с возможностью '
+                                                        'слушать музыку без ограничений, переключая '
+                                                        'треки при желании, а также сохранять ее для '
+                                                        'прослушивания в режиме оффлайн.',
+                             reply_markup=markup)
+
+        if call.data == 'spotify1_1_1':
+            write_adm(call)
+
+        if call.data == 'spotify1_1_2':
+            write_adm(call)
+
+        if call.data == 'spotify1_1_3':
+            write_adm(call)
+
+        if call.data == 'spotify1_1_4':
+            write_adm(call)
+
 
 @bot.message_handler(content_types=['text'])
 def get_text(message):
@@ -191,6 +215,19 @@ def get_text(message):
 
         bot.send_message(message.chat.id, text='Активные категории в магазине:',
                          parse_mode='html', reply_markup=products)
+
+
+def write_adm(call):
+    markup = InlineKeyboardMarkup(row_width=1)
+    back = types.InlineKeyboardButton("Назад", callback_data="back")
+
+    markup.add(back)
+
+    bot.send_message(call.message.chat.id, text='<b>Связь с продавцом👇</b>\n'
+                                                'Сразу писать, какой товар приобретаете\n'
+                                                '\n'
+                                                '@frozee_711',
+                     parse_mode='html', reply_markup=markup)
 
 
 bot.polling(none_stop=True)
