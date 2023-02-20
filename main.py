@@ -47,7 +47,7 @@ def check_callback_data(call):
 
         if call.data == "tgbot":
             markup = InlineKeyboardMarkup(row_width=1)
-            back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
             markup.add(back)
 
             bot.send_photo(call.message.chat.id, open('pict/telegram.jpg', 'rb'),
@@ -55,11 +55,14 @@ def check_callback_data(call):
                                    '📃 Описание: Бот — это небольшое приложение, которое самостоятельно '
                                    'выполняет заранее созданные задачи без участия пользователя. '
                                    'Это может быть онлайн-магазин, рассылка сообщений,'
-                                   'модерирование чатов и многое др.', reply_markup=markup)
+                                   'модерирование чатов и многое др.\n'
+                                   '\n'
+                                   '<b>Все Ваши пожелания, а также стоимость обсуждается лично!!!</b>',
+                           parse_mode='html', reply_markup=markup)
 
         if call.data == "spotify":
             markup = InlineKeyboardMarkup(row_width=1)
-            back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
             markup.add(back)
 
             bot.send_photo(call.message.chat.id, open('pict/spotify.jpg', 'rb'),
@@ -73,10 +76,10 @@ def check_callback_data(call):
 
         if call.data == "discord":
             markup = InlineKeyboardMarkup(row_width=1)
-            back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
             markup.add(back)
 
-            bot.send_photo(call.message.chat.id, open('pict/discord.jpg', 'rb'),
+            bot.send_photo(call.message.chat.id, open('pict/discord.jpeg', 'rb'),
                            caption='📃 Категория: Discord Nitro QR\n'
                                    '📃 Описание: ДАННАЯ ПОДПИСКА НИКОГДА НЕ СЛЕТИТ. После покупки товара вам выдаётся QR - код(или можно логин/пароль), с помощью него я зайду на ваш аккаунт и куплю Nitro с личной карты, которое не слетит. Если вы покупаете Discord Nitro QR без захода на ваш аккаунт, то после покупки вам выдается карта.\n'
                                    '\n'
@@ -85,72 +88,109 @@ def check_callback_data(call):
                                    '-Установка анимированного GIF-аватара.\n'
                                    '-Установка анимированного GIF-баннера.\n'
                                    '-Возможность использования анимированных эмодзи.\n'
-                                   '-Возможность повсеместного использования пользовательских эмодзи (если у пользователя имеется право на использование внешних эмодзи на сервере).\n'
-                                   '-Максимальный размер загрузок изменен с 8 Мб на 100 Мб или на 50мб с Nitro Classic.\n'
                                    '-Возможность демонстрации экрана в 720p 60fps или 1080p 30fps.\n'
                                    '-Значок Discord Nitro badge в профиле.\n'
-                                   '-Возможность смены вашего дискриминатора. (Примечание: если ваша подписка Nitro истечет, ваш дискриминатор будет выбран случайным образом).\n'
                                    '-Буст сервера, чтобы дать любимому серверу эксклюзивные бонусы и крутой значок.\n'
                                    '-Специальный значок в профиля, показывающий всем, что вы поддерживаете Discord.',
                            reply_markup=markup)
 
-            if call.data == "hogwarts_legacy":
-                markup = InlineKeyboardMarkup(row_width=1)
-                back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
-                markup.add(back)
+        if call.data == "hogwarts_legacy":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            markup.add(back)
 
-                bot.send_photo(call.message.chat.id, open('pict/hogwards.jpg', 'rb'),
-                               caption='📃 Категория: Hogwarts Legacy\n'
-                                       '📃 Описание: Hogwarts Legacy - игра основанная на серии фильмов "Гарри Поттер".',
-                               reply_markup=markup)
+            bot.send_photo(call.message.chat.id, open('pict/hogwards.jpg', 'rb'),
+                           caption='📃 Категория: Hogwarts Legacy\n'
+                                   '📃 Описание: Hogwarts Legacy - игра основанная на серии фильмов "Гарри Поттер".',
+                           reply_markup=markup)
 
-            if call.data == "valorant_points":
-                markup = InlineKeyboardMarkup(row_width=1)
-                back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
-                markup.add(back)
+        if call.data == "valorant_points":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            markup.add(back)
 
-            if call.data == "change_reg_steam":
-                markup = InlineKeyboardMarkup(row_width=1)
-                back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
-                markup.add(back)
+            bot.send_photo(call.message.chat.id, open('pict/valorant.jpg', 'rb'),
+                           caption='📃 Категория: Valorant Points(VP)\n'
+                                   '📃 Описание: Valorant Points — это основная денежная '
+                                   'единица в игре, за которую покупаются все игровые предметы, '
+                                   'боевой пропуск и Radianite Points.',
+                           reply_markup=markup)
 
-            if call.data == "pay_steam":
-                markup = InlineKeyboardMarkup(row_width=1)
-                back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
-                markup.add(back)
+        if call.data == "change_reg_steam":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            markup.add(back)
 
-            if call.data == "spotify":
-                markup = InlineKeyboardMarkup(row_width=1)
-                back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
-                markup.add(back)
+            bot.send_photo(call.message.chat.id, open('pict/steam.jpeg', 'rb'),
+                           caption='📃 Категория: Valorant Points(VP)\n'
+                                   '📃 Описание: Valorant Points — это основная денежная '
+                                   'единица в игре, за которую покупаются все игровые предметы, '
+                                   'боевой пропуск и Radianite Points.',
+                           reply_markup=markup)
 
-            if call.data == "spotify":
-                markup = InlineKeyboardMarkup(row_width=1)
-                back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
-                markup.add(back)
+        if call.data == "change_reg_steam":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            markup.add(back)
 
-            if call.data == "spotify":
-                markup = InlineKeyboardMarkup(row_width=1)
-                back = types.InlineKeyboardButton("Назад ко всем категориям", callback_data="back")
-                markup.add(back)
+            bot.send_photo(call.message.chat.id, open('pict/steam.jpeg', 'rb'),
+                           caption='📃 Категория: Смена региона Steam',
+                           reply_markup=markup)
 
-    @bot.message_handler(content_types=['text'])
-    def get_text(message):
-        if message.text == '🎄Все товары🎄':
-            products = types.InlineKeyboardMarkup(row_width=1)
-            tgbot = types.InlineKeyboardButton("Telegram Bot", callback_data="tgbot")
-            spotify = types.InlineKeyboardButton("Spotify Premium", callback_data="spotify")
-            discord = types.InlineKeyboardButton("Discord Nitro QR", callback_data="discord")
-            hogwarts_legacy = types.InlineKeyboardButton("Hogwarts Legacy", callback_data="hogwarts_legacy")
-            valorant_points = types.InlineKeyboardButton("Valorant Points(VP)", callback_data="valorant_points")
-            change_reg_steam = types.InlineKeyboardButton("Смена региона Steam", callback_data="change_reg_steam")
-            pay_steam = types.InlineKeyboardButton("Способ пополнения Steam", callback_data="pay_steam")
-            netflix = types.InlineKeyboardButton("Netflix", callback_data="netflix")
-            epic_games = types.InlineKeyboardButton("Epic Games", callback_data="epic_games")
-            products.add(tgbot, spotify, discord, hogwarts_legacy, valorant_points, change_reg_steam,
-                         pay_steam, netflix, epic_games)
+        if call.data == "pay_steam":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            markup.add(back)
 
-            bot.send_message(message.chat.id, text='Активные категории в магазине:',
-                             parse_mode='html', reply_markup=products)
+            bot.send_photo(call.message.chat.id, open('pict/steam.jpeg', 'rb'),
+                           caption='📃 Категория: Способ пополнения Steam\т'
+                                   '📃 Описание: Пополнения баланса Steam (не через сайты, всё напрямую)',
+                           reply_markup=markup)
 
-    bot.polling(none_stop=True)
+        if call.data == "netflix":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            markup.add(back)
+
+            bot.send_photo(call.message.chat.id, open('pict/netflix.jpg', 'rb'),
+                           caption='📃 Категория: Netflix\n'
+                                   '📃 Описание: Netflix — это один из самых популярных стриминговых '
+                                   '(потоковых) видеосервисов в мире.\n'
+                                   '\n'
+                                   'Подписка покупается на ваш аккаунт, то есть аккаунт не ворованный. '
+                                   'Вы даёте мне логин пароль от нетфликса, а после я захожу и покупаю '
+                                   'вам необходимый тариф для просмотра. Также могу помочь с '
+                                   'регистрацией аккаунта нетфликс.',
+                           reply_markup=markup)
+
+        if call.data == "epic_games":
+            markup = InlineKeyboardMarkup(row_width=1)
+            back = types.InlineKeyboardButton("Назад", callback_data="back")
+            markup.add(back)
+
+            bot.send_photo(call.message.chat.id, open('pict/epicGames.jpg', 'rb'),
+                           caption='📃 Категория: Epic Gamesg',
+                           reply_markup=markup)
+
+
+@bot.message_handler(content_types=['text'])
+def get_text(message):
+    if message.text == '🎄Все товары🎄':
+        products = types.InlineKeyboardMarkup(row_width=1)
+        tgbot = types.InlineKeyboardButton("Telegram Bot", callback_data="tgbot")
+        spotify = types.InlineKeyboardButton("Spotify Premium", callback_data="spotify")
+        discord = types.InlineKeyboardButton("Discord Nitro QR", callback_data="discord")
+        hogwarts_legacy = types.InlineKeyboardButton("Hogwarts Legacy", callback_data="hogwarts_legacy")
+        valorant_points = types.InlineKeyboardButton("Valorant Points(VP)", callback_data="valorant_points")
+        change_reg_steam = types.InlineKeyboardButton("Смена региона Steam", callback_data="change_reg_steam")
+        pay_steam = types.InlineKeyboardButton("Способ пополнения Steam", callback_data="pay_steam")
+        netflix = types.InlineKeyboardButton("Netflix", callback_data="netflix")
+        epic_games = types.InlineKeyboardButton("Epic Games", callback_data="epic_games")
+        products.add(tgbot, spotify, discord, hogwarts_legacy, valorant_points, change_reg_steam,
+                     pay_steam, netflix, epic_games)
+
+        bot.send_message(message.chat.id, text='Активные категории в магазине:',
+                         parse_mode='html', reply_markup=products)
+
+
+bot.polling(none_stop=True)
